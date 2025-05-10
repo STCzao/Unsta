@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import Logo from "../../assets/Logo-unsta-nav.png";
+import menu_icon from "../../assets/menu-icon.png";
 import { Link } from "react-scroll";
 
 const Navbar = () => {
@@ -14,10 +15,15 @@ const Navbar = () => {
 
   //Cuando el usuario realiza un "scroll", se agrega el evento con el mismo nombre. Si el scroll es mayor a 50px, setSticky cambia su valor a true, por lo tanto, se modifica el color del Navbar; si no pasa de 50px se mantiene en false
 
+  const [mobileMenu, setmobileMenu] = useState(false);
+  const toggleMenu = () => {
+    mobileMenu ? setmobileMenu(false) : setmobileMenu(true);
+  };
+
   return (
     <nav className={`container ${sticky ? "dark-nav" : ""}`}>
       <img className="size-logo" src={Logo} alt="" />
-      <ul>
+      <ul className={mobileMenu ? "" : "hide-mobile-menu"}>
         <li>
           <Link to="Principal" smooth={true} offset={0} duration={500}>
             Principal
@@ -55,6 +61,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+      <img src={menu_icon} alt="" className="menu-icon" onClick={toggleMenu} />
     </nav>
   );
 };
