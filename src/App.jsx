@@ -4,6 +4,8 @@ import Hero from "./components/Hero/Hero";
 import Programs from "./components/Programs/Programs";
 import Title from "./components/Title/Title";
 import About from "./components/About/About";
+import Campus from "./components/Campus/Campus";
+import Testimonios from "./components/Testimonios/Testimonios";
 
 const App = () => {
   return (
@@ -13,7 +15,11 @@ const App = () => {
       <div className="container">
         <Title subTitle="Nuestro PROGRAMA" title="¿Qué ofrecemos?" />
         <Programs />
-        <About/>
+        <About />
+        <Title subTitle="Galería" title="Fotos del campus" />
+        <Campus />
+        <Title subTitle="Testimonios" title="¿Qué dicen nuestros estudiantes?"/>
+        <Testimonios/>
       </div>
     </div>
   );

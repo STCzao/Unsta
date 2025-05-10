@@ -3,13 +3,16 @@ import "./Navbar.css";
 import Logo from "../../assets/Logo-unsta-nav.png";
 
 const Navbar = () => {
+  const [sticky, setSticky] = useState(false);
 
-  const [sticky, setsticky] = useState(false);
-
-
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 50 ? setSticky(true) : setSticky(false);
+    });
+  }, []);
 
   return (
-    <nav className="container ">
+    <nav className={`container ${sticky ? "dark-nav" : ""}`}>
       <img className="size-logo" src={Logo} alt="" />
       <ul>
         <li>Principal</li>
