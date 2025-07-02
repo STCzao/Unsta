@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useState } from "react";
 import "./Contact.css";
 import msg_icon from "../../assets/msg-icon.png";
 import mail_icon from "../../assets/mail-icon.png";
@@ -7,11 +7,47 @@ import location_icon from "../../assets/location-icon.png";
 import white_arrow from "../../assets/white-arrow.png";
 
 const Contact = () => {
+  const [result, setResult] = useState("");
+  const [capturarNombre, setCapturarNombre] = useState("");
+  const [capturarTelefono, setCapturarTelefono] = useState("");
+  const [capturarMensaje, setCapturarMensaje] = useState("");
 
-  const [result, setResult] = React.useState("");
+  const [errors, setErrors] = useState({});
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    let newErrors = {};
+    let isValid = true;
+
+    if (capturarNombre.trim() === "") {
+      newErrors.nombre = "El nombre es obligatorio.";
+      isValid = false;
+    }
+
+    if (capturarTelefono.trim() === "") {
+      newErrors.telefono = "El teléfono es obligatorio.";
+      isValid = false;
+    } else if (!/^\d{10,15}$/.test(capturarTelefono)) {
+      newErrors.telefono = "Ingresa un número de teléfono válido.";
+      isValid = false;
+    }
+
+    if (capturarMensaje.trim() === "") {
+      newErrors.mensaje = "El mensaje es obligatorio.";
+      isValid = false;
+    } else if (capturarMensaje.trim().length < 10) {
+      newErrors.mensaje = "El mensaje debe tener al menos 10 caracteres.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+
+    if (!isValid) {
+      setResult("Por favor, completa todos los campos");
+      return;
+    }
+
     setResult("Sending....");
     const formData = new FormData(event.target);
 
@@ -27,9 +63,15 @@ const Contact = () => {
     if (data.success) {
       setResult("Formulario enviado correctamente");
       event.target.reset();
+      setCapturarNombre("");
+      setCapturarTelefono("");
+      setCapturarMensaje("");
+      setErrors({});
     } else {
       console.log("Error", data);
-      setResult(data.message);
+      setResult(
+        "Ocurrió un errror al enviar el formulario. Por favor, intenta de nuevo."
+      );
     }
   };
 
@@ -65,27 +107,40 @@ const Contact = () => {
       </div>
       <div className="contact-col">
         <form onSubmit={onSubmit}>
-          <label>Tu nombre</label>
+          <label>Nombre</label>
           <input
             type="text"
             name="name"
             placeholder="Ingresa tu nombre"
-            required
+            value={capturarNombre}
+            onChange={(e) => setCapturarNombre(e.target.value)}
           />
-          <label>Número telefónico</label>
+          {errors.nombre && (
+            <span className="error-message">{errors.nombre}</span>
+          )}
+
+          <label>Teléfono</label>
           <input
             type="tel"
             name="phone"
             placeholder="Ingresa tu número de teléfono"
-            required
+            value={capturarTelefono}
+            onChange={(e) => setCapturarTelefono(e.target.value)}
           />
-          <label>Escribe tu mensaje aquí</label>
+          {errors.telefono && (
+            <span className="error-message">{errors.telefono}</span>
+          )}
+          <label>Mensaje</label>
           <textarea
             name="message"
             rows="6"
             placeholder="Ingresa tu mensaje"
-            required
+            value={capturarMensaje}
+            onChange={(e) => setCapturarMensaje(e.target.value)}
           ></textarea>
+          {errors.mensaje && (
+            <span className="error-message">{errors.mensaje}</span>
+          )}
           <button type="submit" className="btn dark-btn">
             Enviar ahora
             <img src={white_arrow} alt="" />
