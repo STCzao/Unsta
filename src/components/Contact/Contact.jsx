@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import "./Contact.css";
 import msg_icon from "../../assets/msg-icon.png";
 import mail_icon from "../../assets/mail-icon.png";
@@ -36,7 +36,7 @@ const Contact = () => {
     if (capturarMensaje.trim() === "") {
       newErrors.mensaje = "El mensaje es obligatorio.";
       isValid = false;
-    } else if (capturarMensaje.trim().length < 10) {
+    } else if (capturarMensaje.trim().length <= 10) {
       newErrors.mensaje = "El mensaje debe tener al menos 10 caracteres.";
       isValid = false;
     }

@@ -5,8 +5,12 @@ import gallery_2 from "../../assets/gallery-2.png";
 import gallery_3 from "../../assets/gallery-3.png";
 import gallery_4 from "../../assets/gallery-4.png";
 import white_arrow from "../../assets/white-arrow.png";
+import { useNavigate } from "react-router-dom";
 
 const Campus = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="campus" id="Campus">
       <div className="gallery">
@@ -15,7 +19,7 @@ const Campus = () => {
         <img src={gallery_3} alt="" />
         <img src={gallery_4} alt="" />
       </div>
-      <button className="btn dark-btn">
+      <button className="btn dark-btn" onClick={() => {navigate("/imagenes")}}>
         Ver más aquí <img src={white_arrow} alt="" />
       </button>
     </div>
