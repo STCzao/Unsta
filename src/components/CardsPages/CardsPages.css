@@ -62,7 +62,6 @@
 }
 
 .card-details:hover {
-  box-shadow: 3px 4px 4px 3px (0, 0, 0, 0.75);
   transition: all 0.5s ease;
-  transform: translateY(-6px);
+  transform: translateY(-10px);
 }

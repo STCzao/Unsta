@@ -45,7 +45,7 @@ const App = () => {
               </>
             }
           />
-          <Route path="/planes" element={<PlanEstudio />} />
+          <Route path="/planes" element={<PlanEstudio />}/>
           <Route path="/imagenes" element={<Imagenes />} />
         </Routes>
         <VideoPlayer PlayState={PlayState} setPlayState={setPlayState} />
