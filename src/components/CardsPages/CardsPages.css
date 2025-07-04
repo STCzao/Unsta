@@ -1,0 +1,68 @@
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-details {
+  width: 360px;
+  height: 425px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 20px;
+  margin-top: 50px;
+  cursor: pointer;
+  box-shadow: 3px 4px 4px 3px rgba(0, 0, 0, 0.25);
+  transition: 0.5s;
+  padding: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-tittle {
+  color: #008000;
+}
+
+.card-tittle-1 {
+  color: red;
+}
+
+.card-tittle-2 {
+  color: #0275d8;
+}
+
+.card-tittle-3 {
+  color: #ff8000;
+}
+
+.card-tittle-4 {
+  color: #f0ad4e;
+}
+
+.card-tittle-5 {
+  color: #5bc0de;
+}
+
+.races-list {
+  padding: 20px;
+}
+
+.card-details:hover {
+  box-shadow: 3px 4px 4px 3px (0, 0, 0, 0.75);
+  transition: all 0.5s ease;
+  transform: translateY(-6px);
+}
