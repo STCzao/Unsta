@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../pages/PlanEstudio.css";
 import CardsPages from "../components/CardsPages/CardsPages";
 import Title from "../components/Title/Title";
-import Footer from "../components/Footer/Footer";
+import { Footer } from "../components/Footer/Footer";
 
 const PlanEstudio = () => {
   return (
