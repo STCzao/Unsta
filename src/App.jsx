@@ -12,7 +12,6 @@ import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PlanEstudio from "../src/pages/PlanEstudio.jsx";
-import Imagenes from "../src/pages/Imagenes.jsx";
 
 const App = () => {
   const [PlayState, setPlayState] = useState(false);
@@ -46,7 +45,6 @@ const App = () => {
             }
           />
           <Route path="/planes" element={<PlanEstudio />}/>
-          <Route path="/imagenes" element={<Imagenes />} />
         </Routes>
         <VideoPlayer PlayState={PlayState} setPlayState={setPlayState} />
       </div>
