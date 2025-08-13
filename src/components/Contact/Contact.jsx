@@ -101,7 +101,7 @@ const Contact = () => {
           </li>
           <li>
             <img src={location_icon} alt="" />
-            1139 Amadeo Jacques, Tucumán <br /> T4000, Argentina
+            1139 Francia, Tucumán <br /> T4000, Argentina
           </li>
         </ul>
       </div>
